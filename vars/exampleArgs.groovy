@@ -1,8 +1,9 @@
 def call(Map argsMap, Object block) {
-    def defaultMap = [ namedArg1: 'foos', namedArg2: 'ball' ]
+    
+    // Handle defaults in arguments
+    def defaultMap = [ namedArg1: 'foos', namedArg2: 'ball', namedArg3: 'table' ]
     def args = defaultMap << argsMap
-    println "Arguments:"
-    args.each { key, val -> println "$key = $val" }
-    println "Block:"
-    println block
+
+    println "Arguments: " + args.toMapString()
+    println "Block:" + block
 }

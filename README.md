@@ -43,21 +43,32 @@ pipeline {
 ### Steps
 
 #### `exampleArgs`
-Shows how to use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy).
+Shows how to use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy) and [Steps with arguments](Step-arguments.md).
 
 ```groovy
 steps {
-    exampleFullArgs(namedArg1: 'foo', namedArg2: 'bar') {
+    exampleArgs(namedArg1: 'foo', namedArg2: 'bar') {
         echo 'block steps'
     }
 }
 ```
+
+Example build log output:
+
+```
+[Pipeline] echo
+Arguments: [namedArg1:foo, namedArg2:bar, namedArg3:table]
+[Pipeline] echo
+Block:org.jenkinsci.plugins.workflow.cps.CpsClosure
+```
+
 **Arguments**
 
 | Argument name  | Type       | Purpose                                    | Default   |
 |----------------|------------|--------------------------------------------|-----------|
 | namedArg1      | String     | An example named argument.                 | foos      |
 | namedArg2      | String     | Another example named argument.            | ball      |
+| namedArg3      | String     | Yet another example named argument.        | table     |
 
 #### `exampleHelloWorld`
 A trivial step example. See [`vars/exampleHelloWorld.groovy`](vars/exampleHelloWorld.groovy).
@@ -66,6 +77,13 @@ A trivial step example. See [`vars/exampleHelloWorld.groovy`](vars/exampleHelloW
 steps {
     exampleHelloWorld()
 }
+```
+
+Example build log output:
+
+```
+[Pipeline] echo
+Hello, World!
 ```
 
 ## Contributing

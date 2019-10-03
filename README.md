@@ -7,8 +7,8 @@ Custom [pipeline steps](https://jenkins.io/doc/pipeline/steps/) can be created f
 
 This shared library defines the following custom [steps](#steps):
 
-* [`fullArgsExample`](#fullArgsExample)
-* [`helloWorld`](#helloWorld)
+* [`exampleArgs`](#exampleArgs)
+* [`exampleHelloWorld`](#exampleHelloWorld)
 
 ## Usage
 
@@ -16,7 +16,7 @@ Use the [`library` step](https://jenkins.io/doc/book/pipeline/shared-libraries/#
 
 A basic `Jenkinsfile` example:
 
-```
+```groovy
 library identifier: 'jenkins-shared-library@v1.0', 
     retriever: modernSCM([
         $class: 'GitSCMSource',
@@ -29,7 +29,9 @@ pipeline {
     agent any
     stages {
         stage('Hello') {
-            helloWorld
+            steps {
+                exampleHelloWorld()
+            }
         }
     }
 }
@@ -38,25 +40,34 @@ pipeline {
 > We recommend using a version specifier (for example, the @v1.0 in the `library` step above). This prevents your pipeline from picking up changes from new versions of the shared library that could cause errors. New versions of shared libraries can then be tested separately from standard builds. The available [releases]() are tagged.
 
 
-## Steps
+### Steps
 
-### `fullArgsExample`
-A custom step showing how to use named parameters and a block section.
+#### `exampleArgs`
+Shows how to use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy).
 
-```
+```groovy
 steps {
-    fullArgsExample(namedParam: 'foo', yaNamedParam: 'bar') {
-        block body text
+    exampleFullArgs(namedArg1: 'foo', namedArg2: 'bar') {
+        echo 'block steps'
     }
 }
 ```
+**Arguments**
 
+| Argument name  | Type       | Purpose                                    | Default   |
+|----------------|------------|--------------------------------------------|-----------|
+| namedArg1      | String     | An example named argument.                 | foos      |
+| namedArg2      | String     | Another example named argument.            | ball      |
 
-### `helloWorld`
-A basic step example.
+#### `exampleHelloWorld`
+A trivial step example. See [`vars/exampleHelloWorld.groovy`](vars/exampleHelloWorld.groovy).
 
-```
+```groovy
 steps {
-    helloWorld
+    exampleHelloWorld()
 }
 ```
+
+## Contributing
+
+Pull requests are welcome! When adding steps, please add appropriate entries to this document in the [Steps](#steps) section and links in the [Introduction](#introduction) list.  For major changes, please open an issue to discuss what you'd like to change.

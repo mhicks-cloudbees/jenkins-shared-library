@@ -7,9 +7,9 @@ Custom [steps](https://jenkins.io/doc/pipeline/steps/) can be created for use in
 
 This shared library defines the following custom [steps](#steps):
 
-* [`exampleArgs`](#exampleArgs)
-* [`exampleHelloWorld`](#exampleHelloWorld)
-* [`exampleResourceScript`](#exampleResourceScript)
+* [exampleArgs](#exampleArgs)
+* [exampleHelloWorld](#exampleHelloWorld)
+* [exampleResourceScript](#exampleResourceScript)
 
 ## Usage
 
@@ -38,12 +38,12 @@ pipeline {
 }
 ```
 
-> **Note**: We recommend using a version specifier (for example, the @v1.0.0 in the `library` step above). This prevents your pipeline from picking up changes from new versions of the shared library that could cause errors. New versions of shared libraries can then be tested separately from standard builds. The available [releases]() are tagged.
+> **Note**: We recommend using a specific library version (as with `@v1.0.0` in the `library` step above) instead of `@master`. This prevents your pipeline from using changes in newer versions of the shared library that could cause errors or unexpected behavior. New versions of shared libraries can then be tested separately from standard builds. See [releases](https://github.com/mhicks-cloudbees/jenkins-shared-library/releases).
 
 ## Steps
 
 ### `exampleArgs`
-Use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy).
+Use named parameters with defaults and a block section. See [vars/exampleArgs.groovy](vars/exampleArgs.groovy).
 
 ```groovy
 steps {

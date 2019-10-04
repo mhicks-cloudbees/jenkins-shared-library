@@ -9,6 +9,7 @@ This shared library defines the following custom [steps](#steps):
 
 * [`exampleArgs`](#exampleArgs)
 * [`exampleHelloWorld`](#exampleHelloWorld)
+* [`exampleResourceScript`](#exampleResourceScript)
 
 ## Usage
 
@@ -43,7 +44,7 @@ pipeline {
 ## Steps
 
 ### `exampleArgs`
-Use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy) and [Steps with arguments](Step-arguments.md).
+Use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy).
 
 ```groovy
 steps {
@@ -87,7 +88,7 @@ Hello, World!
 ```
 
 ### `exampleResourceScript`
-Run a script from the shared library resources as a build step.
+Run a script from the shared library resources as a build step. See [vars/exampleResourceScript.groovy](vars/exampleResourceScript.groovy) and [resources/com/example/scripts/example.sh](resources/com/example/scripts/example.sh).
 
 ```
 steps {

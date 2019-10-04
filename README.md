@@ -40,10 +40,10 @@ pipeline {
 > We recommend using a version specifier (for example, the @v1.0 in the `library` step above). This prevents your pipeline from picking up changes from new versions of the shared library that could cause errors. New versions of shared libraries can then be tested separately from standard builds. The available [releases]() are tagged.
 
 
-### Steps
+## Steps
 
-#### `exampleArgs`
-Shows how to use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy) and [Steps with arguments](Step-arguments.md).
+### `exampleArgs`
+Use named parameters with defaults and a block section. See [`vars/exampleArgs.groovy`](vars/exampleArgs.groovy) and [Steps with arguments](Step-arguments.md).
 
 ```groovy
 steps {
@@ -70,7 +70,7 @@ Block:org.jenkinsci.plugins.workflow.cps.CpsClosure
 | namedArg2      | String     | Another example named argument.            | ball      |
 | namedArg3      | String     | Yet another example named argument.        | table     |
 
-#### `exampleHelloWorld`
+### `exampleHelloWorld`
 A trivial step example. See [`vars/exampleHelloWorld.groovy`](vars/exampleHelloWorld.groovy).
 
 ```groovy
@@ -84,6 +84,28 @@ Example build log output:
 ```
 [Pipeline] echo
 Hello, World!
+```
+
+### `exampleResourceScript`
+Run a script from the shared library resources as a build step.
+
+```
+steps {
+    exampleResourceScript()
+}
+```
+
+Example build log output:
+```
+[Pipeline] libraryResource
+[Pipeline] sh
++ env
++ cut -d = -f 1
++ grep JENKINS
+JENKINS_NODE_COOKIE
+JENKINS_HOME
+JENKINS_URL
+JENKINS_SERVER_COOKIE
 ```
 
 ## Contributing

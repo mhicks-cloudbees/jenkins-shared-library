@@ -3,7 +3,7 @@
 
 [Jenkins shared libraries](https://jenkins.io/doc/book/pipeline/shared-libraries/) allow code reuse between pipeline projects.
 
-Custom [pipeline steps](https://jenkins.io/doc/pipeline/steps/) can be created for use in pipelines.  Shell scripts and other supporting files can be included and used by custom steps or directly by pipelines.  
+Custom [steps](https://jenkins.io/doc/pipeline/steps/) can be created for use in pipelines.  Shell scripts and other supporting files can be included and used by custom steps or directly by pipelines.
 
 This shared library defines the following custom [steps](#steps):
 
@@ -18,7 +18,7 @@ Use the [`library` step](https://jenkins.io/doc/book/pipeline/shared-libraries/#
 A basic `Jenkinsfile` example:
 
 ```groovy
-library identifier: 'jenkins-shared-library@v1.0', 
+library identifier: 'jenkins-shared-library@v1.0.0', 
     retriever: modernSCM([
         $class: 'GitSCMSource',
         remote: 'https://github.com/mhicks-cloudbees/jenkins-shared-library.git'
@@ -38,8 +38,7 @@ pipeline {
 }
 ```
 
-> We recommend using a version specifier (for example, the @v1.0 in the `library` step above). This prevents your pipeline from picking up changes from new versions of the shared library that could cause errors. New versions of shared libraries can then be tested separately from standard builds. The available [releases]() are tagged.
-
+> **Note**: We recommend using a version specifier (for example, the @v1.0.0 in the `library` step above). This prevents your pipeline from picking up changes from new versions of the shared library that could cause errors. New versions of shared libraries can then be tested separately from standard builds. The available [releases]() are tagged.
 
 ## Steps
 
@@ -55,7 +54,6 @@ steps {
 ```
 
 Example build log output:
-
 ```
 [Pipeline] echo
 Arguments: [namedArg1:foo, namedArg2:bar, namedArg3:table]
@@ -81,7 +79,6 @@ steps {
 ```
 
 Example build log output:
-
 ```
 [Pipeline] echo
 Hello, World!

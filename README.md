@@ -53,7 +53,7 @@ Use named parameters with defaults and a block section. See [vars/exampleArgs.gr
 
 ```groovy
 steps {
-    exampleArgs(namedArg1: 'foo', namedArg2: 'bar') {
+    exampleArgs(requiredArg: 'foo', optionalArg: 'bar') {
         echo 'block steps'
     }
 }
@@ -62,18 +62,18 @@ steps {
 Example build log output:
 ```
 [Pipeline] echo
-Arguments: [namedArg1:foo, namedArg2:bar, namedArg3:table]
+Arguments: [requiredArg:foo, optionalArg:bar, hasDefaultArg:baz]
 [Pipeline] echo
 Block:org.jenkinsci.plugins.workflow.cps.CpsClosure
 ```
 
 **Arguments**
 
-| Argument name  | Type       | Purpose                                    | Default   |
-|----------------|------------|--------------------------------------------|-----------|
-| namedArg1      | String     | An example named argument.                 | foos      |
-| namedArg2      | String     | Another example named argument.            | ball      |
-| namedArg3      | String     | Yet another example named argument.        | table     |
+| Argument name  | Type       | Purpose                                    | Default   | Required? |
+|----------------|------------|--------------------------------------------|-----------|-----------|
+| requiredArg    | String     | A required named argument.                 |           | ✔         |
+| optionalArg    | String     | Another example named argument.            |           |           |
+| hasDefaultArg  | String     | Yet another example named argument.        | baz       |           |
 
 ### `exampleHelloWorld`
 A trivial step example. See [`vars/exampleHelloWorld.groovy`](vars/exampleHelloWorld.groovy).

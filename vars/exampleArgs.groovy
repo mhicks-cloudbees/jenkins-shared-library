@@ -1,8 +1,11 @@
-def call(Map argsMap, Object block) {
+def call(Map argsMap = [:], Object block) {
     
     // Handle defaults in arguments
-    def defaultMap = [ namedArg1: 'foos', namedArg2: 'ball', namedArg3: 'table' ]
+    def defaultMap = [ hasDefaultArg: 'baz' ]
     def args = defaultMap << argsMap
+
+    // Required arguments
+    assert args.requiredArg: "Missing required arugment."
 
     println "Arguments: " + args.toMapString()
     println "Block:" + block
